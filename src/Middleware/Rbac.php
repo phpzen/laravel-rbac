@@ -15,7 +15,7 @@ class Rbac
      */
     public function handle($request, Closure $next, $level, $permission)
     {
-        dd([$level, $permission]);
+        echo $level . ' : ' . $permission;
         return $next($request);
     }
 }

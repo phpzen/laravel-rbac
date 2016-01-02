@@ -15,7 +15,7 @@ class Rbac
      */
     public function handle($request, Closure $next, $level, $permission)
     {
-        echo $level . ' : ' . $permission;
+        echo config('auth.model');
         return $next($request);
     }
 }

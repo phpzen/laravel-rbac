@@ -2,6 +2,7 @@
 namespace PHPZen\LaravelRbac;
 
 use Illuminate\Support\ServiceProvider;
+use Blade;
 
 class RbacServiceProvider extends ServiceProvider
 {
@@ -13,6 +14,11 @@ class RbacServiceProvider extends ServiceProvider
      */
     protected $defer = false;
 
+    public function register()
+    {
+
+    }
+
     /**
      * Bootstrap the application services.
      *
@@ -23,5 +29,11 @@ class RbacServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/database/migrations/' => base_path('/database/migrations')
         ]);
+        Blade::directive('ifUserIs', function($expression){
+            return "<?php if(Auth::check() && Auth::user()->hasRole{$expression}): ?>";
+        });
+        Blade::directive('ifUserCan', function($expression){
+            return "<?php if(Auth::check() && Auth::user()->canDo{$expression}): ?>";
+        });
     }
 }

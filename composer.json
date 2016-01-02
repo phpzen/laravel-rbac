@@ -4,6 +4,7 @@
   "keywords": [
     "laravel",
     "rbac",
+    "acl",
     "permissions",
     "roles",
     "auth",

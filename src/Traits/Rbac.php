@@ -9,12 +9,20 @@ trait Rbac
         return $this->belongsToMany('PHPZen\LaravelRbac\Model\Role');
     }
 
+    /**
+     * @param string $role
+     * @return bool
+     */
     public function hasRole($role)
     {
         $roles = $this->roles()->lists('slug')->toArray();
         return in_array($role, $roles);
     }
 
+    /**
+     * @param string $operation
+     * @return bool
+     */
     public function canDo($operation)
     {
         $roles = $this->roles;

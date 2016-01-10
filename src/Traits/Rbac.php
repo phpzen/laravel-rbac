@@ -6,7 +6,7 @@ trait Rbac
 {
     public function roles()
     {
-        return $this->belongsToMany('PHPZen\LaravelRbac\Model\Role');
+        return $this->belongsToMany('PHPZen\LaravelRbac\Model\Role')->withTimestamps();
     }
 
     /**

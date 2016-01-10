@@ -15,6 +15,6 @@ class Role extends Model
 
     public function permissions()
     {
-        return $this->belongsToMany('PHPZen\LaravelRbac\Model\Permission');
+        return $this->belongsToMany('PHPZen\LaravelRbac\Model\Permission')->withTimestamps();
     }
 }

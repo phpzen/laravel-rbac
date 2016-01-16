@@ -130,7 +130,9 @@ Any permission already assigned to role will be revoked if you don't pass its id
 Roles and permissions can be checked on `User` instance using `hasRole` and `canDo` methods.
 
 	$isAdmin = Auth::user()->hasRole('administrator'); // pass role slug as parameter
+	$isAdminOrEditor = Auth::user()->hasRole('administrator|editor'); // using OR operator
 	$canUpdateUser = Auth::user()->canDo('update.user'); // pass permission slug as parameter
+	$canUpdateOrCreateUser = Auth::user()->canDo('update.user|create.user'); // using OR operator
 
 ### Protect routes
 
@@ -142,10 +144,18 @@ Laravel RBAC provides middleware to protect single route and route groups. Middl
 		'uses' => 'BackendController@index',
 		'middleware' => ['auth', 'rbac:is,administrator']
 	]);
+	Route::get('/backend', [
+        'uses' => 'BackendController@index',
+        'middleware' => ['auth', 'rbac:is,administrator|editor']
+    ]);
 	Route::get('/dashboard', [
 		'uses' => 'DashboardController@index',
 		'middleware' => ['auth', 'rbac:can,view.dashboard']
 	]);
+	Route::get('/dashboard', [
+        'uses' => 'DashboardController@index',
+        'middleware' => ['auth', 'rbac:can,view.dashboard|view.statistics']
+    ]);
 
 ### Blade directive
 
@@ -158,12 +168,22 @@ Check for role
 	@else
 		// sorry
 	@endif
+	
+	@ifUserIs('administrator|editor')
+        // show editor content here
+    @else
+        // sorry
+    @endif
 
 Check for permission
 
 	@ifUserCan('delete.user')
 		// show delete button
 	@endif
+	
+	@ifUserCan('delete.user|manage.user')
+        // show delete button
+    @endif
 
 ## License
 

@@ -140,19 +140,19 @@ Laravel RBAC provides middleware to protect single route and route groups. Middl
 - **is** or **can** as first param - what to check (role/permission)
 - role/permission slug as second param
 
-	Route::get('/backend', [
-		'uses' => 'BackendController@index',
-		'middleware' => ['auth', 'rbac:is,administrator']
-	]);
-	Route::get('/backend', [
+    Route::get('/backend', [
+        'uses' => 'BackendController@index',
+        'middleware' => ['auth', 'rbac:is,administrator']
+    ]);
+    Route::get('/backend', [
         'uses' => 'BackendController@index',
         'middleware' => ['auth', 'rbac:is,administrator|editor']
     ]);
-	Route::get('/dashboard', [
-		'uses' => 'DashboardController@index',
-		'middleware' => ['auth', 'rbac:can,view.dashboard']
-	]);
-	Route::get('/dashboard', [
+    Route::get('/dashboard', [
+        'uses' => 'DashboardController@index',
+        'middleware' => ['auth', 'rbac:can,view.dashboard']
+    ]);
+    Route::get('/dashboard', [
         'uses' => 'DashboardController@index',
         'middleware' => ['auth', 'rbac:can,view.dashboard|view.statistics']
     ]);

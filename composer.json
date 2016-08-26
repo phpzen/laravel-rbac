@@ -1,5 +1,5 @@
 {
-  "name": "keepanitreel/laravel-rbac",
+  "name": "phpzen/laravel-rbac",
   "description": "Role based access control for Laravel 5",
   "keywords": [
     "laravel",

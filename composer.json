@@ -1,5 +1,5 @@
 {
-  "name": "phpzen/laravel-rbac",
+  "name": "keepanitreel/laravel-rbac",
   "description": "Role based access control for Laravel 5",
   "keywords": [
     "laravel",
@@ -26,7 +26,7 @@
   },
   "autoload": {
     "psr-4": {
-      "PHPZen\\LaravelRbac\\": "src/"
+      "keepanitreel\\LaravelRbac\\": "src/"
     }
   }
 }

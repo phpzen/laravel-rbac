@@ -15,7 +15,7 @@ trait Rbac
      */
     public function hasRole($role)
     {
-        $roles = $this->roles()->lists('slug')->toArray();
+        $roles = $this->roles()->pluck('slug')->toArray();
         if(false !== strpos($role, '|')) {
             $roleArr = explode('|', $role);
         } else {
@@ -33,7 +33,7 @@ trait Rbac
         $roles = $this->roles;
         $permissions = [];
         foreach ($roles as $role) {
-            $permissions = array_merge($permissions, $role->permissions()->lists('slug')->toArray());
+            $permissions = array_merge($permissions, $role->permissions()->pluck('slug')->toArray());
         }
         $permissions = array_unique($permissions);
         if(false !== strpos($operation, '|')) {

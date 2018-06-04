@@ -30,10 +30,10 @@ class RbacServiceProvider extends ServiceProvider
             __DIR__ . '/database/migrations/' => base_path('/database/migrations')
         ]);
         Blade::directive('ifUserIs', function($expression){
-            return "<?php if(Auth::check() && Auth::user()->hasRole{$expression}): ?>";
+            return "<?php if(Auth::check() && Auth::user()->hasRole({$expression})): ?>";
         });
         Blade::directive('ifUserCan', function($expression){
-            return "<?php if(Auth::check() && Auth::user()->canDo{$expression}): ?>";
+            return "<?php if(Auth::check() && Auth::user()->canDo({$expression})): ?>";
         });
     }
 }
